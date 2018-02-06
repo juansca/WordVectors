@@ -71,7 +71,7 @@ if __name__ == '__main__':
     days_pattern = re.compile(days_pattern)
 
     # DATES
-    date_pattern = r'''((?:[1-2][0-9]|3[0-1]|[0-9]))\\[1-12]\\((?:1[0-9]|2[0-9])\d\d)'''
+    date_pattern = r'''((?:[1-2][0-9]|3[0-1]|[0-9]))\/(?:1*[0-2]|[1-9])\/((?:[1-2][0-9])\d\d)'''
     date_pattern = re.compile(date_pattern)
 
     # FLOATS
