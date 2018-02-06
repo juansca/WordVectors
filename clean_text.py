@@ -16,7 +16,7 @@ def format_sentence(sent):
     return sentenceSplit
 
 
-def clean_raw_sent(sent, years_pattern, days_pattern, date_pattern
+def clean_raw_sent(sent, years_pattern, days_pattern, date_pattern,
                    float_pattern, number_pattern, na_ws_wn_pattern):
     """Clean the raw sentence
     - NUMBER (1, 2, 3, 49045)
@@ -83,7 +83,7 @@ if __name__ == '__main__':
     number_pattern = re.compile(number_pattern)
 
     # non-alphanumeric symbols, multiple whitespaces and multiple newlines
-    na_ws_wn_pattern = r'[^0-9a-zA-Záéíóú]+|\W+|\n+'
+    na_ws_wn_pattern = r'[^0-9a-zA-Záéíóúñ]+|\W+|\n+'
     na_ws_wn_pattern = re.compile(na_ws_wn_pattern)
 
 
@@ -114,11 +114,11 @@ if __name__ == '__main__':
                 with open(cleaned_filename, 'w') as cleaned_file:
                     for line in rfile.readlines():
                         sentences = format_sentence(line)
-                        clean_sents = [clean_raw_sent(sentence, years_pattern, days_pattern,
+                        clean_sents = [clean_raw_sent(sentence, years_pattern, days_pattern, date_pattern,
                                        float_pattern, number_pattern, na_ws_wn_pattern).rstrip() + '\n'
                                        for sentence in sentences
                                        if re.match(r'\n+|\W+',
-                                                   clean_raw_sent(sentence, years_pattern, days_pattern, date_pattern
+                                                   clean_raw_sent(sentence, years_pattern, days_pattern, date_pattern,
                                                                  float_pattern, number_pattern, na_ws_wn_pattern))
                                        is None]
                         cleaned_file.write(' '.join(clean_sents))
