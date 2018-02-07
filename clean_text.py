@@ -11,8 +11,12 @@ def progress(msg, width=None):
     sys.stdout.flush()
 
 
-def format_sentence(sent):
-    sentenceSplit = filter(None, sent.split("."))
+def format_sentence(sent, abr_reg):
+    def to_format(line):
+        return not line.isspace()
+
+    sent = re.sub(abr_reg, " ABREVIATION ", sent)
+    sentenceSplit = filter(to_format, sent.split("."))
     return sentenceSplit
 
 
@@ -86,15 +90,19 @@ if __name__ == '__main__':
     na_ws_wn_pattern = r'[^0-9a-zA-Záéíóúñ]+|\W+|\n+'
     na_ws_wn_pattern = re.compile(na_ws_wn_pattern)
 
+    # Abreviations
+    abr_pattern = '([A-Z]{1,2}\.)+'
+    abr_pattern = re.compile(abr_pattern)
 
-    root_cleaned_filename = 'cleaned_text/cleaned_text_'
+
+    root_cleaned_filename = 'cleaned_text2/cleaned_text_'
     nfiles_processed = 0
     cleaned_filename = root_cleaned_filename + str(nfiles_processed)
     clean_sentences = list()
-    if not os.path.isdir('cleaned_text'):
-        os.mkdir('cleaned_text')
+    if not os.path.isdir('cleaned_text2'):
+        os.mkdir('cleaned_text2')
 
-    root_raw_dir = 'raw_data/sbwce/'
+    root_raw_dir = 'raw_data2/sbwce/'
 
     assert os.path.isdir(root_raw_dir)
 
@@ -113,14 +121,10 @@ if __name__ == '__main__':
 
                 with open(cleaned_filename, 'w') as cleaned_file:
                     for line in rfile.readlines():
-                        sentences = format_sentence(line)
+                        sentences = format_sentence(line, abr_pattern)
                         clean_sents = [clean_raw_sent(sentence, years_pattern, days_pattern, date_pattern,
                                        float_pattern, number_pattern, na_ws_wn_pattern).rstrip() + '\n'
-                                       for sentence in sentences
-                                       if re.match(r'\n+|\W+',
-                                                   clean_raw_sent(sentence, years_pattern, days_pattern, date_pattern,
-                                                                 float_pattern, number_pattern, na_ws_wn_pattern))
-                                       is None]
+                                       for sentence in sentences]
                         cleaned_file.write(' '.join(clean_sents))
                         del(sentences)
                         del(clean_sents)
