@@ -1,0 +1,2 @@
+dim 300
+word_ngram 3

@@ -1,0 +1,4 @@
+import fasttext
+
+
+## FILE TO CREATE WORD VECTORS USING FASTTEXT
