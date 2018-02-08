@@ -15,7 +15,7 @@ def format_sentence(sent, abr_reg):
     def to_format(line):
         return not line.isspace()
 
-    sent = re.sub(abr_reg, " ABREVIATION ", sent)
+    sent = re.sub(abr_reg, " ABREVIATION ", sent.replace("...", ""))
     sentenceSplit = filter(to_format, sent.split("."))
     return sentenceSplit
 
@@ -87,11 +87,11 @@ if __name__ == '__main__':
     number_pattern = re.compile(number_pattern)
 
     # non-alphanumeric symbols, multiple whitespaces and multiple newlines
-    na_ws_wn_pattern = r'[^0-9a-zA-Záéíóúñ]+|\W+|\n+'
+    na_ws_wn_pattern = r'[^0-9a-zA-ZáéíóúÁËÍÓÚñ]+|\W+|\n+'
     na_ws_wn_pattern = re.compile(na_ws_wn_pattern)
 
     # Abreviations
-    abr_pattern = '([A-Z]{1,2}\.)+'
+    abr_pattern = r'([A-Z]{1,2}\.)+|[A-Z]+[a-z]{1,2}\.'
     abr_pattern = re.compile(abr_pattern)
 
 
@@ -102,7 +102,7 @@ if __name__ == '__main__':
     if not os.path.isdir('cleaned_text2'):
         os.mkdir('cleaned_text2')
 
-    root_raw_dir = 'raw_data2/sbwce/'
+    root_raw_dir = 'raw_data/sbwce2/'
 
     assert os.path.isdir(root_raw_dir)
 
