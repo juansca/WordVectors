@@ -28,13 +28,13 @@ case4 = {
 
 
 case5 = {
-    'output_dir': 'vectors/100_1/',
+    'output_dir': 'vectors/300_2/',
     'dim': 300,
     'word_ngram': 2,
 }
 
 case6 = {
-    'output_dir': 'vectors/100_1/',
+    'output_dir': 'vectors/300_3/',
     'dim': 300,
     'word_ngram': 3,
 }
@@ -61,4 +61,4 @@ if __name__ == '__main__':
     if not os.path.isdir(root_out_dir):
         os.mkdir(root_out_dir)
 
-    create_word_vectors(input_filename, **case_default_1)
+    create_word_vectors(input_filename, **case2)
