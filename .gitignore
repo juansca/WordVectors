@@ -1,0 +1,6 @@
+raw_data/*
+cleaned_text/*
+vectors/*
+input/*
+validation/*.txt
+validation/accuracies/*
