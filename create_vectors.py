@@ -61,4 +61,4 @@ if __name__ == '__main__':
     if not os.path.isdir(root_out_dir):
         os.mkdir(root_out_dir)
 
-    create_word_vectors(input_filename, **case2)
+    create_word_vectors(input_filename, **case5)
