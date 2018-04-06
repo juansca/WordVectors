@@ -4,3 +4,4 @@ vectors/*
 input/*
 validation/*.txt
 validation/accuracies/*
+*/ancora/*
