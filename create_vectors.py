@@ -1,7 +1,18 @@
+"""Create word embeddings using Fasttext model
+
+Usage:
+  create_vectors.py -d <dim> -w <wngram>
+  create_vectors.py -h | --help
+
+Options:
+  -d <dim>      Dimension of word embeddings.
+  -w <wngram>   Word ngram Length
+  -h --help     Show this screen.
+"""
 import fasttext
 import os
 
-case_default_1 = {
+case1 = {
     'output_dir': 'vectors/100_1/',
     'dim': 100,
     'word_ngram': 1,
@@ -44,8 +55,8 @@ def create_word_vectors(input_file, output_dir, dim, word_ngram):
 
     if not os.path.isdir(output_dir):
         os.mkdir(output_dir)
-
-    output_file = os.path.join(output_dir, 'out')
+    filename = output_dir.split('/')[-2]
+    output_file = os.path.join(output_dir, filename)
 
     model = fasttext.skipgram(input_file, output_file,
                               dim=dim, word_ngrams=word_ngram)
@@ -61,4 +72,4 @@ if __name__ == '__main__':
     if not os.path.isdir(root_out_dir):
         os.mkdir(root_out_dir)
 
-    create_word_vectors(input_filename, **case5)
+    create_word_vectors(input_filename, **case1)
