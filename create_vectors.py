@@ -1,54 +1,17 @@
 """Create word embeddings using Fasttext model
 
 Usage:
-  create_vectors.py -d <dim> -w <wngram>
+  create_vectors.py [-d <dim>] [-w <wngram>]
   create_vectors.py -h | --help
 
 Options:
-  -d <dim>      Dimension of word embeddings.
-  -w <wngram>   Word ngram Length
+  -d <dim>      Dimension of word embeddings [default: 100]
+  -w <wngram>   Word ngram Length [default: 1]
   -h --help     Show this screen.
 """
 import fasttext
 import os
-
-case1 = {
-    'output_dir': 'vectors/100_1/',
-    'dim': 100,
-    'word_ngram': 1,
-}
-
-case2 = {
-    'output_dir': 'vectors/100_2/',
-    'dim': 100,
-    'word_ngram': 2,
-}
-
-case3 = {
-    'output_dir': 'vectors/100_3/',
-    'dim': 100,
-    'word_ngram': 3,
-}
-
-
-case4 = {
-    'output_dir': 'vectors/300_1/',
-    'dim': 300,
-    'word_ngram': 1,
-}
-
-
-case5 = {
-    'output_dir': 'vectors/300_2/',
-    'dim': 300,
-    'word_ngram': 2,
-}
-
-case6 = {
-    'output_dir': 'vectors/300_3/',
-    'dim': 300,
-    'word_ngram': 3,
-}
+from docopt import docopt
 
 
 def create_word_vectors(input_file, output_dir, dim, word_ngram):
@@ -58,11 +21,20 @@ def create_word_vectors(input_file, output_dir, dim, word_ngram):
     filename = output_dir.split('/')[-2]
     output_file = os.path.join(output_dir, filename)
 
-    model = fasttext.skipgram(input_file, output_file,
-                              dim=dim, word_ngrams=word_ngram)
+    fasttext.skipgram(input_file, output_file,
+                      dim=dim, word_ngrams=word_ngram)
 
 
 if __name__ == '__main__':
+    opts = docopt(__doc__)
+
+    dim = int(opts['-d'])
+    wngram = int(opts['-w'])
+    case = {
+        'output_dir': 'vectors/{}_{}/'.format(str(dim), str(wngram)),
+        'dim': dim,
+        'word_ngram': wngram,
+    }
 
     input_filename = 'input/input_vect_file.txt'
     root_out_dir = 'vectors/'
@@ -72,4 +44,13 @@ if __name__ == '__main__':
     if not os.path.isdir(root_out_dir):
         os.mkdir(root_out_dir)
 
-    create_word_vectors(input_filename, **case1)
+    print("""Fasttext Word embeddings are trainning:
+             Dimension: {}
+             Word ngrams length: {}
+             Input filename: {}
+             Output path: {}""".format(dim,
+                                       wngram,
+                                       input_filename,
+                                       case['output_dir']))
+
+    create_word_vectors(input_filename, **case)
