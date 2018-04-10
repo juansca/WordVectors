@@ -4,3 +4,7 @@ vectors/*
 input/*
 validation/*.txt
 validation/accuracies/*
+*ancora
+*__pycache__
+*Models
+*__init__.py
