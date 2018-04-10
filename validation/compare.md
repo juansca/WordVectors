@@ -1,3 +1,5 @@
+This is the comparition using the gensim word2vec evaluation method.
+
 ```
 model       capital-common-countries    capital-world    currency    city-in-state    family    gram1-adjective-to-adverb    gram2-opposite    gram5-present-participle    gram6-nationality-adjective    gram7-past-tense    gram8-plural    gram9-plural-verbs     total
 --------  --------------------------  ---------------  ----------  ---------------  --------  ---------------------------  ----------------  --------------------------  -----------------------------  ------------------  --------------  --------------------  --------
@@ -11,3 +13,18 @@ Cristian                    0.928105         0.882988   0.153846         0.30171
 FastText                    0.871345         0.883377   0.153846         0.386691   0.885621                     0.37619           0.333333                    0.800395                       0.930782            0.23913         0.772043              0.493333  0.677529
 
 ```
+
+
+This is the comparition using a tagger's evaluation where our tagger has the embeddings as features.
+The '@@_new' models where trained and evaluated using fasttext binary model. That means that
+we use the out of vocabulary word vectors too. For the other ones we just use vector on text format
+that means that we use only the vectors for word seen, and for the other ones we use a zeros vector.
+  
+```
+model             100_1     100_1_new       100_2    100_2_new   100_3      100_3_new       Cristian
+----------------------------------------------------------------------------------------------------
+Known accuracy:   97.38%     97.40%       97.39%    97.39%       97.38%       97.38%         97.38%
+Unknown accuracy: 89.17%     90.15%       89.46%    89.98%       89.31%       90.03%         88.22%
+Total accuracy:   96.57%     96.68%       96.61%    96.65%       96.58%       96.65%         96.47%
+
+```  
