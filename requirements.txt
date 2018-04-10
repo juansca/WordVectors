@@ -1,0 +1,9 @@
+fasttext
+docopt
+sklearn
+numpy
+collections
+pickle
+matplotlib
+gensim
+nltk
