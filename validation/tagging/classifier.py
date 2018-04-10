@@ -39,15 +39,18 @@ class ClassifierTagger:
     """Simple and fast classifier based tagger.
     """
 
-    def __init__(self, clf='svm'):
+    def __init__(self, clf='svm', wv_file=None, is_bin=True):
         """
         clf -- classifying model, one of 'svm', 'maxent' (default: 'svm').
+        wv_file -- Filename containing word embeddings
+        is_bin -- Word embeddings are saved at fasttext binary format
         """
+
         self._clf = clf
 
         # build the pipeline
         vect = DictVectorizer()
-        evect = EmbeddingVectorizer()
+        evect = EmbeddingVectorizer(filename=wv_file, bin=is_bin)
         clf = classifiers[clf]()
         self._pipeline = Pipeline([
             #('vect', vect),
