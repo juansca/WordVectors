@@ -80,6 +80,10 @@ Para esta evaluación se debe correr el script:
 ```
 python scripts/evaluate.py
 ```
+
+En este caso utilizamos el corpus tal cual se encuentra en el directorio `sbcwe`.
+
+
 **NOTA:** Como es un método secundario en nuestro desarrollo, ha quedado con
 fallas de usabilidad. En caso de querer usarlo, se debe ir al script y
 modificar la lista `word_vector_files`.
@@ -116,6 +120,13 @@ no se guardará el modelo entrenado. En vez de eso, se entrenará, se evaluará 
 luego se descartará. Esto es debido a un issue de este proyecto respecto a la
 capacidad de pickle de guardar el modelo de fasttext. Se debería implementar
 el método `__reduce__()`.
+
+**NOTA2:** En este caso los word embeddings fueron generados con el corpus tal
+cual está en el directorio `sbcwe` exceptuando el ancora, donde sólo usamos el
+correspondiente con el ancora `3LB-CAST*`. A esto lo hicimos ya que entramos
+el tagger con la otra parte del corpus ancora y queríamos evitar cualquier tipo
+de influencia en el resultado del accuracy.
+
 
 Para este caso, la comparación del accuracy obtenido se muestra en la
 siguiente tabla:
