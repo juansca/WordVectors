@@ -140,7 +140,8 @@ Total accuracy:   96.57%     96.68%       96.61%    96.65%       96.58%       96
 ```  
 
 Los modelos con nombre '@@_new' fueron entrenados usando el modelo de fasttext
-y utilizando los 'word vectors for out-of-vocabulary words'. En el otro caso, se utilizan los word vectors literales para palabras dentro del vocabulario y, en caso de que no estén en el mismo, su vector es nulo.
+y utilizando los 'word vectors for out-of-vocabulary words'. En el otro caso, se utilizan los word vectors literales
+para palabras dentro del vocabulario y, en caso de que no estén en el mismo, su vector es nulo.
 
 En el caso del modelo 'Cristian', se corresponde con los word embeddings
 generados y explicados [aquí](http://crscardellino.me/SBWCE/). Para este caso
