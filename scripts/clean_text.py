@@ -120,7 +120,7 @@ if __name__ == '__main__':
             with open(raw_file, 'r') as rfile:
 
                 with open(cleaned_filename, 'w') as cleaned_file:
-                    for line in rfile.readlines():
+                    for line in rfile:
                         sentences = format_sentence(line, abr_pattern)
                         clean_sents = [clean_raw_sent(sentence, years_pattern, days_pattern, date_pattern,
                                        float_pattern, number_pattern, na_ws_wn_pattern).rstrip() + '\n'
