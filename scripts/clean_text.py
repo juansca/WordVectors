@@ -55,7 +55,7 @@ def clean_raw_sent(sent, years_pattern, days_pattern, date_pattern,
 
     # Remove non-alphanumeric symbols
     # Remove multiple whitespaces and replace with single whitespace
-    # na_ws_wn_pattern = r'[^0-9a-zA-Záéíóú]+|\W+|\n+'
+    # na_ws_wn_pattern = r'[^0-9a-zA-Záéíóú]+|\s+|\n+'
     clean_sent = re.sub(na_ws_wn_pattern, ' ', clean_sent)
 
     return clean_sent
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     number_pattern = re.compile(number_pattern)
 
     # non-alphanumeric symbols, multiple whitespaces and multiple newlines
-    na_ws_wn_pattern = r'[^0-9a-zA-ZáéíóúÁËÍÓÚñ]+|\W+|\n+'
+    na_ws_wn_pattern = r'[^0-9a-zA-ZáéíóúÁËÍÓÚñ]+|\s+|\n+'
     na_ws_wn_pattern = re.compile(na_ws_wn_pattern)
 
     # Abreviations
@@ -120,7 +120,7 @@ if __name__ == '__main__':
             with open(raw_file, 'r') as rfile:
 
                 with open(cleaned_filename, 'w') as cleaned_file:
-                    for line in rfile:
+                    for line in rfile.readlines():
                         sentences = format_sentence(line, abr_pattern)
                         clean_sents = [clean_raw_sent(sentence, years_pattern, days_pattern, date_pattern,
                                        float_pattern, number_pattern, na_ws_wn_pattern).rstrip() + '\n'
