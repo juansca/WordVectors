@@ -55,7 +55,7 @@ def clean_raw_sent(sent, years_pattern, days_pattern, date_pattern,
 
     # Remove non-alphanumeric symbols
     # Remove multiple whitespaces and replace with single whitespace
-    # na_ws_wn_pattern = r'[^0-9a-zA-Záéíóú]+|\W+|\n+'
+    # na_ws_wn_pattern = r'[^0-9a-zA-Záéíóú]+|\s+|\n+'
     clean_sent = re.sub(na_ws_wn_pattern, ' ', clean_sent)
 
     return clean_sent
@@ -87,7 +87,7 @@ if __name__ == '__main__':
     number_pattern = re.compile(number_pattern)
 
     # non-alphanumeric symbols, multiple whitespaces and multiple newlines
-    na_ws_wn_pattern = r'[^0-9a-zA-ZáéíóúÁËÍÓÚñ]+|\W+|\n+'
+    na_ws_wn_pattern = r'[^0-9a-zA-ZáéíóúÁËÍÓÚñ]+|\s+|\n+'
     na_ws_wn_pattern = re.compile(na_ws_wn_pattern)
 
     # Abreviations

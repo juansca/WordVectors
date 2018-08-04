@@ -1,10 +1,11 @@
 """Create word embeddings using Fasttext model
 
 Usage:
-  create_vectors.py [-d <dim>] [-w <wngram>]
+  create_vectors.py [-i <input>] [-d <dim>] [-w <wngram>]
   create_vectors.py -h | --help
 
 Options:
+  -i <input>    Input filename.
   -d <dim>      Dimension of word embeddings [default: 100]
   -w <wngram>   Word ngram Length [default: 1]
   -h --help     Show this screen.
@@ -36,7 +37,8 @@ if __name__ == '__main__':
         'word_ngram': wngram,
     }
 
-    input_filename = 'input/input_vect_file.txt'
+    input_filename = opts['-i'] or 'input/input_vect_file.txt'
+
     root_out_dir = 'vectors/'
 
     assert os.path.isfile(input_filename)
