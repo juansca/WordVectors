@@ -40,44 +40,44 @@ def plot_data(data_dir, plot_title, objects, y_min=0, y_max=1, n=None):
         plt.bar(y_pos, values, align='center', width=0.5, color=['black', 'red', 'green', 'blue', 'cyan', 'pink', 'purple', 'orange'], alpha=0.9)
         plt.xticks(y_pos, objects)
         plt.ylim(y_min, y_max)
-        plt.ylabel('Performance')
+        plt.ylabel('Accuracy')
         plt.title(title)
     plt.savefig(plot_title + '.png')
     plt.close()
 
-#objects = ("100_1", "100_2", "100_3", "300_1", "300_2", "300_3", "Cristian", "FastText")
-#n = 221
-#title = 'plot1'
-#plot_data(plots, title, objects, n=n)
-#title = 'plot2'
-#plot_data(plots2, title, objects, n=n)
-#title = 'plot3'
-#plot_data(plots3, title, objects, n=n)
-#title = 'total'
-#plot_data(total, title)
+objects = ("100_1", "100_2", "100_3", "300_1", "300_2", "300_3", "Cristian", "FastText")
+n = 221
+title = 'plot1'
+plot_data(plots, title, objects=objects, n=n)
+title = 'plot2'
+plot_data(plots2, title, objects=objects, n=n)
+title = 'plot3'
+plot_data(plots3, title, objects=objects, n=n)
+title = 'total'
+plot_data(total, title, objects=objects)
 #
 
 
-objects = ("100_1", "100_1_new", "100_2", "100_2_new", "100_3", "100_3_new", "Cristian")
-
-n = 211
-title = "tagger1"
-known_acc = {
-"Unknown accuracy": [x / 100 for x in [89.17, 90.15, 89.46, 89.98, 89.31, 90.03, 88.22]],
-"Total accuracy": [x / 100 for x in [96.57, 96.68, 96.61, 96.65, 96.58, 96.65, 96.47]],
-"Known accuracy": [x / 100 for x in [97.38, 97.40, 97.39, 97.39, 97.38, 97.38, 97.38]],
-
-}
-plot_data(known_acc, title, objects, n=n)
-
-title = "tagger2"
-total_acc = {
-"Total accuracy": [x / 100 for x in [96.57, 96.68, 96.61, 96.65, 96.58, 96.65, 96.47]]
-}
-plot_data(total_acc, title, objects)
-
-title = "tagger3"
-unk_acc = {
-"Unknown accuracy": [x / 100 for x in [89.17, 90.15, 89.46, 89.98, 89.31, 90.03, 88.22]]
-}
-plot_data(unk_acc, title, objects)
+#objects = ("100_1", "100_1_new", "100_2", "100_2_new", "100_3", "100_3_new", "Cristian")
+#
+#n = 211
+#title = "tagger1"
+#known_acc = {
+#"Unknown accuracy": [x / 100 for x in [89.17, 90.15, 89.46, 89.98, 89.31, 90.03, 88.22]],
+#"Total accuracy": [x / 100 for x in [96.57, 96.68, 96.61, 96.65, 96.58, 96.65, 96.47]],
+#"Known accuracy": [x / 100 for x in [97.38, 97.40, 97.39, 97.39, 97.38, 97.38, 97.38]],
+#
+#}
+#plot_data(known_acc, title, objects, n=n)
+#
+#title = "tagger2"
+#total_acc = {
+#"Total accuracy": [x / 100 for x in [96.57, 96.68, 96.61, 96.65, 96.58, 96.65, 96.47]]
+#}
+#plot_data(total_acc, title, objects)
+#
+#title = "tagger3"
+#unk_acc = {
+#"Unknown accuracy": [x / 100 for x in [89.17, 90.15, 89.46, 89.98, 89.31, 90.03, 88.22]]
+#}
+#plot_data(unk_acc, title, objects)

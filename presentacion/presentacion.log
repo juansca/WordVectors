@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.25)  3 AUG 2018 23:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.25)  4 AUG 2018 11:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1784,10 +1784,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 33628 strings out of 492990
- 777764 string characters out of 6135005
+ 33630 strings out of 492990
+ 777780 string characters out of 6135005
  974438 words of memory out of 5000000
- 36454 multiletter control sequences out of 15000+600000
+ 36456 multiletter control sequences out of 15000+600000
  5814 words of font info for 21 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,16n,98p,779b,1485s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1796,7 +1796,7 @@ r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb>
-Output written on presentacion.pdf (30 pages, 300871 bytes).
+Output written on presentacion.pdf (30 pages, 298305 bytes).
 PDF statistics:
  866 PDF objects out of 1000 (max. 8388607)
  798 compressed objects within 8 object streams
